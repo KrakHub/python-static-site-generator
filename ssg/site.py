@@ -3,14 +3,13 @@ from pathlib import Path
 
 class Site:
     def __init__(self, source, dest):
-        self._source = source.Path()
-        self._dest = dest.Path()
+        self.source = source.Path()
+        self.dest = dest.Path()
     def create_dir(self, path):
-        directory = (self._dest / Path.relative_to(self._source))
+        directory = (self.dest / Path.relative_to(self.source))
         Path.mkdir(directory,parents=True,exist_ok=True)
     def build(self):
-        Path.mkdir(self._dest,parents=True,exist_ok=True)
-        for path in self._source.rglob("*"):
+        Path.mkdir(self.dest,parents=True,exist_ok=True)
+        for path in self.source.rglob("*"):
             if path.isdir():
                 self.create_dir(path)
-        
