@@ -6,4 +6,6 @@ def main(source="content",dest="dist"):
         "source":source,
         "dest":dest
     }
-objSite = Site()
+    Site(**config).build()
+
+typer.run(main)
