@@ -15,7 +15,7 @@ class Content(Mapping):
         metadata = load(fm,Loader=FullLoader)
         return cls(metadata, content)
 
-    def __init__(self, metadta, content):
+    def __init__(self, metadata, content):
         self.data = metadata
         self.data["content"] = content
     
@@ -42,7 +42,7 @@ class Content(Mapping):
 
     def __repr__(self):
         data = {}
-        for value, key in self.data.items():
+        for key, value in self.data.items():
             if key != "content":
                 data[key] = value
         return str(data)
